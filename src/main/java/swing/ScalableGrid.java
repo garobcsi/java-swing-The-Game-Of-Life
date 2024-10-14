@@ -32,8 +32,7 @@ public class ScalableGrid extends JPanel implements MouseWheelListener, KeyListe
     private double offsetX = 0, offsetY = 0;
     private double targetOffsetX = 0, targetOffsetY = 0;
     private int lastMouseX, lastMouseY;
-    private boolean panning = false;
-    private boolean drawPanning = false;
+    private boolean panning = false, drawPanning = false;
 
     public ScalableGrid(boolean[][] matrix) {
         this.matrix = matrix;
@@ -284,16 +283,5 @@ public class ScalableGrid extends JPanel implements MouseWheelListener, KeyListe
 
     @Override
     public void componentHidden(ComponentEvent e) {
-    }
-
-    public static void main(String[] args) {
-        boolean[][] matrix = new boolean[20][20];
-
-        JFrame frame = new JFrame("Scalable and Moveable Clickable Grid");
-        ScalableGrid grid = new ScalableGrid(matrix);
-        frame.add(grid);
-        frame.setSize(600, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
     }
 }
