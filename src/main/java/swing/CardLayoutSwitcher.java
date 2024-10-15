@@ -6,12 +6,12 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-public class CardLayoutSwitcher extends JPanel {
+public class CardLayoutSwitcher extends JPanel{
 
-    private CardLayout cardLayout;
-    private JPanel cardPanel;
-    private Map<String, JPanel> panelMap;
-    private Set<JPanel> activePanels;
+    private final CardLayout cardLayout;
+    private final JPanel cardPanel;
+    private final Map<String, JPanel> panelMap;
+    private final Set<JPanel> activePanels;
 
     public CardLayoutSwitcher() {
         cardLayout = new CardLayout();
@@ -49,12 +49,11 @@ public class CardLayoutSwitcher extends JPanel {
         cardPanel.add(panel, name);
     }
 
-    public int switchTo(String name) {
+    public void switchTo(String name) {
         if (!panelMap.containsKey(name))
-            return 1;
+            return;
         cardLayout.show(cardPanel, name);
         panelMap.get(name).requestFocusInWindow();
-        return 0;
     }
 
     public void registerActivePanel(JPanel panel) {
