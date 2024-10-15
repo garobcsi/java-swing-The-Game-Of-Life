@@ -57,7 +57,7 @@ public class PauseMenu extends JPanel implements KeyListener {
             if (this.hasFocus()) {
                 switcher.switchTo("grid");
             } else {
-                switcher.switchTo("esc");
+                switcher.switchTo("pause");
             }
         }
     }

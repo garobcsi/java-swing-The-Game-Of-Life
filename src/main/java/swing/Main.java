@@ -14,7 +14,7 @@ public class Main {
 
         CardLayoutSwitcher switcher = new CardLayoutSwitcher();
         switcher.addPanel("home",new MainMenu(switcher));
-        switcher.addPanel("esc",new PauseMenu(switcher));
+        switcher.addPanel("pause",new PauseMenu(switcher));
         switcher.addPanel("matrixSize", new MatrixSizeMenu(switcher,matrix));
         switcher.addPanel("grid",new ScalableGrid(matrix));
 
