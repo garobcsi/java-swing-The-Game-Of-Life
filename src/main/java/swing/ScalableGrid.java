@@ -19,7 +19,6 @@ import java.awt.geom.AffineTransform;
 import java.util.Arrays;
 import java.util.Random;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
