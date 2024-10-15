@@ -9,18 +9,15 @@ import java.util.*;
 public class CardLayoutSwitcher extends JPanel{
 
     private final CardLayout cardLayout;
-    private final JPanel cardPanel;
     private final Map<String, JPanel> panelMap;
     private final Set<JPanel> activePanels;
 
     public CardLayoutSwitcher() {
         cardLayout = new CardLayout();
-        cardPanel = new JPanel(cardLayout);
+        this.setLayout(cardLayout);
+
         panelMap = new HashMap<>();
         activePanels = new HashSet<>();
-
-        this.setLayout(new BorderLayout());
-        this.add(cardPanel, BorderLayout.CENTER);
 
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
             @Override
@@ -46,13 +43,13 @@ public class CardLayoutSwitcher extends JPanel{
 
     public void addPanel(String name, JPanel panel) {
         panelMap.put(name, panel);
-        cardPanel.add(panel, name);
+        this.add(panel, name);
     }
 
     public void switchTo(String name) {
         if (!panelMap.containsKey(name))
             return;
-        cardLayout.show(cardPanel, name);
+        cardLayout.show(this, name);
         panelMap.get(name).requestFocusInWindow();
     }
 
