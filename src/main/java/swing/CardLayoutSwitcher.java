@@ -56,12 +56,18 @@ public class CardLayoutSwitcher extends JPanel{
         panelMap.get(name).requestFocusInWindow();
     }
 
-    public void registerActivePanel(JPanel panel) {
+    public void registerActivePanel(String name) {
+        if (!panelMap.containsKey(name))
+            return;
+        JPanel panel = panelMap.get(name);
         activePanels.add(panel);
         panel.requestFocusInWindow();
     }
 
-    public void unregisterActivePanel(JPanel panel) {
+    public void unregisterActivePanel(String name) {
+        if (!panelMap.containsKey(name))
+            return;
+        JPanel panel = panelMap.get(name);
         activePanels.remove(panel);
     }
 }
