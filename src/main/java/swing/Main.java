@@ -10,13 +10,13 @@ public class Main {
 
         frame.setLocationRelativeTo(null);
 
-        boolean [][] matrix = new boolean[1][1];
+        boolean[][] matrix = new boolean[1][1];
 
         CardLayoutSwitcher switcher = new CardLayoutSwitcher();
-        switcher.addPanel("home",new MainMenu(switcher));
-        switcher.addPanel("pause",new PauseMenu(switcher));
-        switcher.addPanel("matrixSize", new MatrixSizeMenu(switcher,matrix));
-        switcher.addPanel("grid",new ScalableGrid(matrix));
+        switcher.addPanel("home", new MainMenu(switcher));
+        switcher.addPanel("pause", new PauseMenu(switcher));
+        switcher.addPanel("matrixSize", new MatrixSizeMenu(switcher, matrix));
+        switcher.addPanel("grid", new ScalableGrid(matrix));
 
         switcher.switchTo("home");
 

@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-public class CardLayoutSwitcher extends JPanel{
+public class CardLayoutSwitcher extends JPanel {
 
     private final CardLayout cardLayout;
     private final Map<String, JPanel> panelMap;
