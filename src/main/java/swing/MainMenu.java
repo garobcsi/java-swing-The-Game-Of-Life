@@ -16,10 +16,7 @@ public class MainMenu extends JPanel {
     }
 
     private void render() {
-        this.setLayout(new BorderLayout());
-
-        JPanel menuPanel = new JPanel(new BorderLayout());
-        menuPanel.setLayout(new BorderLayout(10, 10));
+        this.setLayout(new BorderLayout(10, 10));
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(3, 1, 10, 10));
@@ -37,10 +34,8 @@ public class MainMenu extends JPanel {
         JLabel titleLabel = new JLabel("The Game Of Life", JLabel.CENTER);
         titleLabel.setFont(new Font("Times New Roman", Font.PLAIN, 36));
 
-        menuPanel.add(titleLabel, BorderLayout.NORTH);
-        menuPanel.add(buttonPanel, BorderLayout.CENTER);
-
-        this.add(menuPanel);
+        this.add(titleLabel, BorderLayout.NORTH);
+        this.add(buttonPanel, BorderLayout.CENTER);
 
         playButton.addActionListener(event -> {
             switcher.switchTo("matrixSize");
