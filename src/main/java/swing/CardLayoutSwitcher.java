@@ -1,7 +1,6 @@
 package swing;
 
 import javax.swing.*;
-import javax.swing.Timer;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
@@ -10,20 +9,20 @@ public class CardLayoutSwitcher extends JPanel {
 
     private final CardLayout cardLayout;
     private final Map<String, JPanel> panelMap;
-    private final Set<JPanel> activePanels;
+    private final Set<JPanel> registeredPanels;
 
     public CardLayoutSwitcher() {
         cardLayout = new CardLayout();
         this.setLayout(cardLayout);
 
         panelMap = new HashMap<>();
-        activePanels = new HashSet<>();
+        registeredPanels = new HashSet<>();
 
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
             @Override
             public boolean dispatchKeyEvent(KeyEvent e) {
 
-                for (JPanel activePanel : activePanels) {
+                for (JPanel activePanel : registeredPanels) {
                     if (!activePanel.hasFocus()) {
                         for (KeyListener listener : activePanel.getKeyListeners()) {
                             if (e.getID() == KeyEvent.KEY_PRESSED) {
@@ -53,18 +52,18 @@ public class CardLayoutSwitcher extends JPanel {
         panelMap.get(name).requestFocusInWindow();
     }
 
-    public void registerActivePanel(String name) {
+    public void registerKeyListener(String name) {
         if (!panelMap.containsKey(name))
             return;
         JPanel panel = panelMap.get(name);
-        activePanels.add(panel);
+        registeredPanels.add(panel);
         panel.requestFocusInWindow();
     }
 
-    public void unregisterActivePanel(String name) {
+    public void unregisterKeyListener(String name) {
         if (!panelMap.containsKey(name))
             return;
         JPanel panel = panelMap.get(name);
-        activePanels.remove(panel);
+        registeredPanels.remove(panel);
     }
 }
