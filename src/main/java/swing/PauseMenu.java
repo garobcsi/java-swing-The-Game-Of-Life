@@ -47,7 +47,6 @@ public class PauseMenu extends JPanel implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println(KeyEvent.getKeyText(e.getKeyCode()));
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             if (this.hasFocus()) {
                 switcher.switchTo("grid");
