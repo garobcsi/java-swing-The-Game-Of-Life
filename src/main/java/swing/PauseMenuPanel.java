@@ -5,10 +5,10 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class PauseMenu extends JPanel implements KeyListener {
-    private final CardLayoutSwitcher switcher;
+public class PauseMenuPanel extends JPanel implements KeyListener {
+    private final CardLayoutSwitcherPanel switcher;
 
-    PauseMenu(CardLayoutSwitcher switcher) {
+    PauseMenuPanel(CardLayoutSwitcherPanel switcher) {
         this.switcher = switcher;
 
         addKeyListener(this);

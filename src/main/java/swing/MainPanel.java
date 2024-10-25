@@ -5,7 +5,7 @@ import game.NotMatrixException;
 
 import javax.swing.*;
 
-public class Main {
+public class MainPanel {
     public static void main(String[] args) throws NotMatrixException {
         JFrame frame = new JFrame("The Game Of Life");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -15,11 +15,11 @@ public class Main {
 
         boolean[][] matrix = new boolean[40][40];
 
-        CardLayoutSwitcher switcher = new CardLayoutSwitcher();
-        switcher.addPanel("home", new MainMenu(switcher));
-        switcher.addPanel("pause", new PauseMenu(switcher));
-        switcher.addPanel("matrixSize", new MatrixSizeMenu(switcher, matrix));
-        switcher.addPanel("grid", new ScalableGrid(matrix));
+        CardLayoutSwitcherPanel switcher = new CardLayoutSwitcherPanel();
+        switcher.addPanel("home", new MainMenuPanel(switcher));
+        switcher.addPanel("pause", new PauseMenuPanel(switcher));
+        switcher.addPanel("matrixSize", new MatrixSizeMenuPanel(switcher, matrix));
+        switcher.addPanel("grid", new ScalableGridPanel(matrix));
         switcher.addPanel("nextStep",new CellularAutomata(matrix));
 
         switcher.switchTo("home");

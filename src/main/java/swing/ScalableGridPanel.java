@@ -22,7 +22,7 @@ import java.util.Random;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class ScalableGrid extends JPanel implements MouseWheelListener, KeyListener, ActionListener, MouseListener,
+public class ScalableGridPanel extends JPanel implements MouseWheelListener, KeyListener, ActionListener, MouseListener,
         MouseMotionListener, ComponentListener {
     private static final int CELL_SIZE = 50;
     private final boolean[][] matrix;
@@ -33,7 +33,7 @@ public class ScalableGrid extends JPanel implements MouseWheelListener, KeyListe
     private int lastMouseX, lastMouseY;
     private boolean panning = false, drawPanning = false;
 
-    public ScalableGrid(boolean[][] matrix) {
+    public ScalableGridPanel(boolean[][] matrix) {
         this.matrix = matrix;
         addMouseWheelListener(this);
         addKeyListener(this);

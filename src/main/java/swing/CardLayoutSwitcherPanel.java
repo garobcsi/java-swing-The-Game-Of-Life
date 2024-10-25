@@ -5,13 +5,13 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-public class CardLayoutSwitcher extends JPanel {
+public class CardLayoutSwitcherPanel extends JPanel {
 
     private final CardLayout cardLayout;
     private final Map<String, JPanel> panelMap;
     private final Set<JPanel> registeredPanels;
 
-    public CardLayoutSwitcher() {
+    public CardLayoutSwitcherPanel() {
         cardLayout = new CardLayout();
         this.setLayout(cardLayout);
 

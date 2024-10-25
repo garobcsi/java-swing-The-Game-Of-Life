@@ -1,15 +1,13 @@
 package swing;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.*;
 
-public class MainMenu extends JPanel {
-    private final CardLayoutSwitcher switcher;
+public class MainMenuPanel extends JPanel {
+    private final CardLayoutSwitcherPanel switcher;
 
-    MainMenu(CardLayoutSwitcher switcher) {
+    MainMenuPanel(CardLayoutSwitcherPanel switcher) {
         this.switcher = switcher;
         setFocusable(true);
         render();
