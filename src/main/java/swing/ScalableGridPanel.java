@@ -284,6 +284,7 @@ public class ScalableGridPanel extends JPanel implements MouseWheelListener, Key
 
     @Override
     public void componentShown(ComponentEvent e) {
+        resetPosition();
     }
 
     @Override
