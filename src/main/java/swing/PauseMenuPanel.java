@@ -21,13 +21,15 @@ public class PauseMenuPanel extends JPanel implements KeyListener {
         this.setLayout(new BorderLayout(10, 10));
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(3, 1, 10, 10));
+        buttonPanel.setLayout(new GridLayout(4, 1, 10, 10));
 
         JButton backButton = new JButton("Back");
+        JButton controlsButton = new JButton("Game Controls");
         JButton saveGameButton = new JButton("Save Game");
         JButton mainMenuButton = new JButton("Back To The Main Menu");
 
         buttonPanel.add(backButton);
+        buttonPanel.add(controlsButton);
         buttonPanel.add(saveGameButton);
         buttonPanel.add(mainMenuButton);
 
