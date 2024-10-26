@@ -1,5 +1,7 @@
 package swing;
 
+import game.BufferedMatrix;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -16,7 +18,6 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.geom.AffineTransform;
-import java.util.Arrays;
 import java.util.Random;
 
 import javax.swing.JPanel;
@@ -24,8 +25,10 @@ import javax.swing.Timer;
 
 public class ScalableGridPanel extends JPanel implements MouseWheelListener, KeyListener, ActionListener, MouseListener,
         MouseMotionListener, ComponentListener {
+    private final BufferedMatrix<Boolean> matrix;
+    private final Random random = new Random();
+
     private static final int CELL_SIZE = 50;
-    private final boolean[][] matrix;
     private double scale = 1.0;
     private double targetScale = 1.0;
     private double offsetX = 0, offsetY = 0;
@@ -33,8 +36,8 @@ public class ScalableGridPanel extends JPanel implements MouseWheelListener, Key
     private int lastMouseX, lastMouseY;
     private boolean panning = false, drawPanning = false;
 
-    public ScalableGridPanel(boolean[][] matrix) {
-        this.matrix = matrix;
+    public ScalableGridPanel(BufferedMatrix<Boolean> bufferedMatrix) {
+        this.matrix = bufferedMatrix;
         addMouseWheelListener(this);
         addKeyListener(this);
         addMouseListener(this);
@@ -54,7 +57,7 @@ public class ScalableGridPanel extends JPanel implements MouseWheelListener, Key
         int col = realX / CELL_SIZE;
         int row = realY / CELL_SIZE;
 
-        if (row >= 0 && row < matrix.length && col >= 0 && col < matrix[0].length) {
+        if (row >= 0 && row < matrix.getSizeX() && col >= 0 && col < matrix.getSizeY()) {
             return new int[] { row, col };
         }
         return null;
@@ -65,7 +68,7 @@ public class ScalableGridPanel extends JPanel implements MouseWheelListener, Key
         if (coordinates != null) {
             int row = coordinates[0];
             int col = coordinates[1];
-            matrix[row][col] = !matrix[row][col];
+            matrix.update(row,col,!matrix.get(row,col));
         }
     }
 
@@ -74,7 +77,7 @@ public class ScalableGridPanel extends JPanel implements MouseWheelListener, Key
         if (coordinates != null) {
             int row = coordinates[0];
             int col = coordinates[1];
-            matrix[row][col] = cellValue;
+            matrix.update(row,col,cellValue);
         }
     }
 
@@ -88,8 +91,8 @@ public class ScalableGridPanel extends JPanel implements MouseWheelListener, Key
     private void calculateInitialFit() {
         double panelWidth = getWidth();
         double panelHeight = getHeight();
-        double gridWidth = matrix[0].length * CELL_SIZE;
-        double gridHeight = matrix.length * CELL_SIZE;
+        double gridHeight = matrix.getSizeX() * CELL_SIZE;
+        double gridWidth = matrix.getSizeY() * CELL_SIZE;
 
         double scaleX = panelWidth / gridWidth;
         double scaleY = panelHeight / gridHeight;
@@ -111,15 +114,15 @@ public class ScalableGridPanel extends JPanel implements MouseWheelListener, Key
 
         int startCol = Math.max(0, (int) (-offsetX / scale / CELL_SIZE));
         int startRow = Math.max(0, (int) (-offsetY / scale / CELL_SIZE));
-        int endCol = Math.min(matrix[0].length, (int) ((getWidth() - offsetX) / scale / CELL_SIZE) + 1);
-        int endRow = Math.min(matrix.length, (int) ((getHeight() - offsetY) / scale / CELL_SIZE) + 1);
+        int endRow = Math.min(matrix.getSizeX(), (int) ((getHeight() - offsetY) / scale / CELL_SIZE) + 1);
+        int endCol = Math.min(matrix.getSizeY(), (int) ((getWidth() - offsetX) / scale / CELL_SIZE) + 1);
 
         for (int row = startRow; row < endRow; row++) {
             for (int col = startCol; col < endCol; col++) {
                 int x = col * CELL_SIZE;
                 int y = row * CELL_SIZE;
 
-                if (matrix[row][col]) {
+                if (matrix.get(row, col)) {
                     g2d.setColor(Color.BLACK);
                 } else {
                     g2d.setColor(Color.WHITE);
@@ -244,16 +247,19 @@ public class ScalableGridPanel extends JPanel implements MouseWheelListener, Key
                 break;
             }
             case KeyEvent.VK_R: {
-                Arrays.stream(matrix).forEach(x -> Arrays.fill(x, false));
+                for (int i = 0; i < matrix.getSizeX(); i++) {
+                    for (int j = 0; j < matrix.getSizeY(); j++) {
+                        matrix.update(i,j,false);
+                    }
+                }
                 break;
             }
             case KeyEvent.VK_F: {
-                Random random = new Random();
-                Arrays.stream(matrix).forEach(row -> {
-                    for (int i = 0; i < row.length; i++) {
-                        row[i] = random.nextBoolean();
+                for (int i = 0; i < matrix.getSizeX(); i++) {
+                    for (int j = 0; j < matrix.getSizeY(); j++) {
+                        matrix.update(i,j,random.nextBoolean());
                     }
-                });
+                }
                 break;
             }
         }

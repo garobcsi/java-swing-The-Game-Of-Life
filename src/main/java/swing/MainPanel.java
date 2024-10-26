@@ -1,26 +1,26 @@
 package swing;
 
+import game.BufferedMatrix;
 import game.CellularAutomata;
-import game.NotMatrixException;
 
 import javax.swing.*;
 
 public class MainPanel {
-    public static void main(String[] args) throws NotMatrixException {
+    public static void main(String[] args) {
         JFrame frame = new JFrame("The Game Of Life");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 600);
 
         frame.setLocationRelativeTo(null);
 
-        boolean[][] matrix = new boolean[40][40];
+        BufferedMatrix<Boolean> bufferedMatrix = new BufferedMatrix<>(40,40,false);
 
         CardLayoutSwitcherPanel switcher = new CardLayoutSwitcherPanel();
         switcher.addPanel("home", new MainMenuPanel(switcher));
         switcher.addPanel("pause", new PauseMenuPanel(switcher));
-        switcher.addPanel("matrixSize", new MatrixSizeMenuPanel(switcher, matrix));
-        switcher.addPanel("grid", new ScalableGridPanel(matrix));
-        switcher.addPanel("nextStep",new CellularAutomataPanel(new CellularAutomata(matrix)));
+        switcher.addPanel("matrixSize", new MatrixSizeMenuPanel(switcher, bufferedMatrix));
+        switcher.addPanel("grid", new ScalableGridPanel(bufferedMatrix));
+        switcher.addPanel("nextStep",new CellularAutomataPanel(new CellularAutomata(bufferedMatrix)));
 
         switcher.switchTo("home");
 
