@@ -50,8 +50,10 @@ public class PauseMenuPanel extends JPanel implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             if (this.hasFocus()) {
                 switcher.switchTo("grid");
+                switcher.registerKeyListener("nextStep");
             } else {
                 switcher.switchTo("pause");
+                switcher.unregisterKeyListener("nextStep");
             }
         }
     }
