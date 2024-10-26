@@ -41,6 +41,12 @@ public class CardLayoutSwitcherPanel extends JPanel {
         this.add(panel, name);
     }
 
+    public JPanel getPanel(String name) {
+        if (!panelMap.containsKey(name))
+            return null;
+        return panelMap.get(name);
+    }
+
     public void switchTo(String name) {
         if (!panelMap.containsKey(name))
             return;
