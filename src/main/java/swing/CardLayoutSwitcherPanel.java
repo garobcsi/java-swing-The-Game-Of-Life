@@ -9,7 +9,7 @@ public class CardLayoutSwitcherPanel extends JPanel {
 
     private final CardLayout cardLayout;
     private final Map<String, JPanel> panelMap;
-    private final Set<JPanel> registeredPanels;
+    private final HashSet<JPanel> registeredPanels;
 
     public CardLayoutSwitcherPanel() {
         cardLayout = new CardLayout();
