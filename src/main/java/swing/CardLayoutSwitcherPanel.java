@@ -9,7 +9,7 @@ public class CardLayoutSwitcherPanel extends JPanel {
 
     private final CardLayout cardLayout;
     private final Map<String, JPanel> panelMap;
-    private final HashSet<JPanel> registeredPanels;
+    private final Set<JPanel> registeredPanels;
 
     public CardLayoutSwitcherPanel() {
         cardLayout = new CardLayout();
@@ -18,25 +18,21 @@ public class CardLayoutSwitcherPanel extends JPanel {
         panelMap = new HashMap<>();
         registeredPanels = new HashSet<>();
 
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
-            @Override
-            public boolean dispatchKeyEvent(KeyEvent e) {
-
-                for (JPanel activePanel : registeredPanels) {
-                    if (!activePanel.hasFocus()) {
-                        for (KeyListener listener : activePanel.getKeyListeners()) {
-                            if (e.getID() == KeyEvent.KEY_PRESSED) {
-                                listener.keyPressed(e);
-                            } else if (e.getID() == KeyEvent.KEY_RELEASED) {
-                                listener.keyReleased(e);
-                            } else if (e.getID() == KeyEvent.KEY_TYPED) {
-                                listener.keyTyped(e);
-                            }
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -> {
+            for (JPanel activePanel : new HashSet<>(registeredPanels)) {
+                if (!activePanel.hasFocus()) {
+                    for (KeyListener listener : activePanel.getKeyListeners()) {
+                        if (e.getID() == KeyEvent.KEY_PRESSED) {
+                            listener.keyPressed(e);
+                        } else if (e.getID() == KeyEvent.KEY_RELEASED) {
+                            listener.keyReleased(e);
+                        } else if (e.getID() == KeyEvent.KEY_TYPED) {
+                            listener.keyTyped(e);
                         }
                     }
                 }
-                return false;
             }
+            return false;
         });
     }
 
