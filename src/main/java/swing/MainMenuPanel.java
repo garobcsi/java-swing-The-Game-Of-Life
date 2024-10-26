@@ -37,7 +37,6 @@ public class MainMenuPanel extends JPanel {
 
         playButton.addActionListener(event -> {
             switcher.switchTo("matrixSize");
-
         });
 
         loadGameButton.addActionListener(event -> {
