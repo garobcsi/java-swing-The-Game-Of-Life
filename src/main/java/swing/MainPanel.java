@@ -20,7 +20,7 @@ public class MainPanel {
         switcher.addPanel("pause", new PauseMenuPanel(switcher));
         switcher.addPanel("matrixSize", new MatrixSizeMenuPanel(switcher, matrix));
         switcher.addPanel("grid", new ScalableGridPanel(matrix));
-        switcher.addPanel("nextStep",new CellularAutomata(matrix));
+        switcher.addPanel("nextStep",new CellularAutomataPanel(new CellularAutomata(matrix)));
 
         switcher.switchTo("home");
 

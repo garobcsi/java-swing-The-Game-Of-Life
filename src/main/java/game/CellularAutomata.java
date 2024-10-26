@@ -4,15 +4,13 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class CellularAutomata extends JPanel implements KeyListener {
+public class CellularAutomata {
     private final boolean[][] matrix;
 
     int sizeX = 0, sizeY = 0;
 
     public CellularAutomata(boolean[][] matrix) throws NotMatrixException {
         this.matrix = matrix;
-        addKeyListener(this);
-        setFocusable(true);
 
         sizeX = matrix.length;
         sizeY = matrix[0].length;
@@ -58,22 +56,7 @@ public class CellularAutomata extends JPanel implements KeyListener {
         for (int i = 0; i < sizeX; i++) {
             System.arraycopy(nextMatrix[i], 0, matrix[i], 0, sizeY);
         }
-    }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_N) {
-            next();
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
+        System.gc();
     }
 }
