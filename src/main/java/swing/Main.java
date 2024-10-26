@@ -5,7 +5,7 @@ import game.CellularAutomata;
 
 import javax.swing.*;
 
-public class MainPanel {
+public class Main {
     public static void main(String[] args) {
         JFrame frame = new JFrame("The Game Of Life");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
