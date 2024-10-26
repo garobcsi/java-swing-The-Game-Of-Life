@@ -1,14 +1,19 @@
 package swing;
 
+import game.BufferedMatrix;
+
 import java.awt.*;
 import java.io.File;
 import javax.swing.*;
 
 public class MainMenuPanel extends JPanel {
     private final CardLayoutSwitcherPanel switcher;
+    private final BufferedMatrix<Boolean> matrix;
 
-    MainMenuPanel(CardLayoutSwitcherPanel switcher) {
+    MainMenuPanel(CardLayoutSwitcherPanel switcher, BufferedMatrix<Boolean> matrix) {
         this.switcher = switcher;
+        this.matrix = matrix;
+
         setFocusable(true);
         render();
     }
@@ -44,9 +49,16 @@ public class MainMenuPanel extends JPanel {
             fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("JSON File", "json"));
             int result = fileChooser.showOpenDialog(null);
 
-            if (result == JFileChooser.APPROVE_OPTION) {
-                File file = fileChooser.getSelectedFile();
-            }
+            if (result != JFileChooser.APPROVE_OPTION) return;
+
+            File file = fileChooser.getSelectedFile();
+            if (!file.isFile()) return;
+
+            matrix.fromJson(file);
+
+            switcher.switchTo("grid");
+            switcher.registerKeyListener("pause");
+            switcher.registerKeyListener("nextStep");
         });
 
         exitButton.addActionListener(event -> System.exit(0));

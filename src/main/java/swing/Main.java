@@ -16,8 +16,8 @@ public class Main {
         BufferedMatrix<Boolean> bufferedMatrix = new BufferedMatrix<>(40,40,false);
 
         CardLayoutSwitcherPanel switcher = new CardLayoutSwitcherPanel();
-        switcher.addPanel("home", new MainMenuPanel(switcher));
-        switcher.addPanel("pause", new PauseMenuPanel(switcher));
+        switcher.addPanel("home", new MainMenuPanel(switcher,bufferedMatrix));
+        switcher.addPanel("pause", new PauseMenuPanel(switcher,bufferedMatrix));
         switcher.addPanel("matrixSize", new MatrixSizeMenuPanel(switcher, bufferedMatrix));
         switcher.addPanel("grid", new ScalableGridPanel(bufferedMatrix));
         switcher.addPanel("nextStep",new CellularAutomataPanel(new CellularAutomata(bufferedMatrix)));
