@@ -31,7 +31,6 @@ public class CellularAutomataPanel extends JPanel implements KeyListener {
                 } else {
                     stopPlaying();
                 }
-                playingToggle = !playingToggle;
                 break;
             }
             case KeyEvent.VK_N -> cellularAutomata.next();
@@ -43,7 +42,7 @@ public class CellularAutomataPanel extends JPanel implements KeyListener {
 
     }
 
-    private void startPlaying() {
+    public void startPlaying() {
         playThread = new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
                 cellularAutomata.next();
@@ -56,9 +55,11 @@ public class CellularAutomataPanel extends JPanel implements KeyListener {
             }
         });
         playThread.start();
+
+        playingToggle = true;
     }
 
-    private void stopPlaying() {
+    public void stopPlaying() {
         if (playThread != null) {
             playThread.interrupt();
             try {
@@ -68,6 +69,8 @@ public class CellularAutomataPanel extends JPanel implements KeyListener {
             }
             playThread = null;
         }
+
+        playingToggle = false;
     }
 }
 
