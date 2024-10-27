@@ -1,13 +1,18 @@
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import swing.CardLayoutSwitcherPanel;
-
-import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.concurrent.CountDownLatch;
 
-import static org.junit.jupiter.api.Assertions.*;
+import javax.swing.JPanel;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import swing.CardLayoutSwitcherPanel;
 
 public class CardLayoutSwitcherPanelTest {
 
