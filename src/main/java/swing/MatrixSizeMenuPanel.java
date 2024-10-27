@@ -21,63 +21,74 @@ public class MatrixSizeMenuPanel extends JPanel implements KeyListener {
     }
 
     private void render() {
-
         setLayout(new BorderLayout());
+        setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
-        JButton backButton = new JButton("Back");
+
+        JButton backButton = createButton("Back", 24);
+        backButton.addActionListener(e -> switcher.switchTo("home"));
+
         topPanel.add(backButton);
         add(topPanel, BorderLayout.NORTH);
-
-        backButton.addActionListener(e -> {
-            switcher.switchTo("home");
-        });
 
         JPanel contentPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.insets = new Insets(15, 15, 15, 15);
 
-        JLabel rowsLabel = new JLabel("Number of Rows:");
         gbc.gridx = 0;
         gbc.gridy = 0;
-        contentPanel.add(rowsLabel, gbc);
+        contentPanel.add(createLabel("Number of Rows:", 24), gbc);
 
-        JSpinner rowsSpinner = new JSpinner(new SpinnerNumberModel(40, 1, 100, 1));
+        JSpinner rowsSpinner = createSpinner(40);
         gbc.gridx = 1;
-        gbc.gridy = 0;
         contentPanel.add(rowsSpinner, gbc);
 
-        JLabel colsLabel = new JLabel("Number of Columns:");
         gbc.gridx = 0;
         gbc.gridy = 1;
-        contentPanel.add(colsLabel, gbc);
+        contentPanel.add(createLabel("Number of Columns:", 24), gbc);
 
-        JSpinner colsSpinner = new JSpinner(new SpinnerNumberModel(40, 1, 100, 1));
+        JSpinner colsSpinner = createSpinner(40);
         gbc.gridx = 1;
-        gbc.gridy = 1;
         contentPanel.add(colsSpinner, gbc);
 
-        JButton submitButton = new JButton("Set Matrix Size");
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.gridwidth = 2;
-        contentPanel.add(submitButton, gbc);
-
+        JButton submitButton = createButton("Set Matrix Size", 26);
         submitButton.addActionListener(e -> {
             matrix.changeSize((Integer) colsSpinner.getValue(), (Integer) rowsSpinner.getValue());
-
             switcher.switchTo("grid");
             switcher.registerKeyListener("pause");
             switcher.registerKeyListener("nextStep");
         });
+        contentPanel.add(submitButton, gbc);
 
         add(contentPanel, BorderLayout.CENTER);
     }
 
+    private JButton createButton(String text, int fontSize) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Arial", Font.PLAIN, fontSize));
+        return button;
+    }
+
+    private JLabel createLabel(String text, int fontSize) {
+        JLabel label = new JLabel(text);
+        label.setFont(new Font("Arial", Font.PLAIN, fontSize));
+        return label;
+    }
+
+    private JSpinner createSpinner(int initialValue) {
+        JSpinner spinner = new JSpinner(new SpinnerNumberModel(initialValue, 1, 100, 1));
+        spinner.setFont(new Font("Arial", Font.PLAIN, 20));
+        ((JSpinner.DefaultEditor) spinner.getEditor()).getTextField().setColumns(5);
+        return spinner;
+    }
+
     @Override
     public void keyTyped(KeyEvent e) {
-
     }
 
     @Override

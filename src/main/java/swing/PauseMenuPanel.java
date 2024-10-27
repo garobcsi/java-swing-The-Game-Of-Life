@@ -30,10 +30,10 @@ public class PauseMenuPanel extends JPanel implements KeyListener {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(4, 1, 10, 10));
 
-        JButton backButton = new JButton("Back");
-        JButton controlsButton = new JButton("Game Controls");
-        JButton saveGameButton = new JButton("Save Game");
-        JButton mainMenuButton = new JButton("Back To The Main Menu");
+        JButton backButton = createButton("Back",24);
+        JButton controlsButton = createButton("Game Controls",24);
+        JButton saveGameButton = createButton("Save Game",24);
+        JButton mainMenuButton = createButton("Back To The Main Menu",24);
 
         buttonPanel.add(backButton);
         buttonPanel.add(controlsButton);
@@ -43,7 +43,7 @@ public class PauseMenuPanel extends JPanel implements KeyListener {
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(0, 30, 30, 30));
 
         JLabel titleLabel = new JLabel("Pause Menu", JLabel.CENTER);
-        titleLabel.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+        titleLabel.setFont(new Font("Times New Roman", Font.PLAIN, 36));
 
         this.add(titleLabel, BorderLayout.NORTH);
         this.add(buttonPanel, BorderLayout.CENTER);
@@ -91,6 +91,12 @@ public class PauseMenuPanel extends JPanel implements KeyListener {
             switcher.unregisterKeyListener("pause");
             switcher.switchTo("home");
         });
+    }
+
+    private JButton createButton(String text, int fontSize) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Arial", Font.PLAIN, fontSize));
+        return button;
     }
 
     @Override
