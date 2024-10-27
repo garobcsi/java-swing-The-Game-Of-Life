@@ -30,10 +30,10 @@ public class PauseMenuPanel extends JPanel implements KeyListener {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(4, 1, 10, 10));
 
-        JButton backButton = createButton("Back",24);
-        JButton controlsButton = createButton("Game Controls",24);
-        JButton saveGameButton = createButton("Save Game",24);
-        JButton mainMenuButton = createButton("Back To The Main Menu",24);
+        JButton backButton = createButton("Back");
+        JButton controlsButton = createButton("Game Controls");
+        JButton saveGameButton = createButton("Save Game");
+        JButton mainMenuButton = createButton("Back To The Main Menu");
 
         buttonPanel.add(backButton);
         buttonPanel.add(controlsButton);
@@ -93,9 +93,9 @@ public class PauseMenuPanel extends JPanel implements KeyListener {
         });
     }
 
-    private JButton createButton(String text, int fontSize) {
+    private JButton createButton(String text) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Arial", Font.PLAIN, fontSize));
+        button.setFont(new Font("Arial", Font.PLAIN, 24));
         return button;
     }
 

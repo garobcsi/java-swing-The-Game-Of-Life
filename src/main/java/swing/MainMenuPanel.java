@@ -24,9 +24,9 @@ public class MainMenuPanel extends JPanel {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(3, 1, 10, 10));
 
-        JButton playButton = createButton("Play",24);
-        JButton loadGameButton = createButton("Load Game",24);
-        JButton exitButton = createButton("Exit",24);
+        JButton playButton = createButton("Play");
+        JButton loadGameButton = createButton("Load Game");
+        JButton exitButton = createButton("Exit");
 
         buttonPanel.add(playButton);
         buttonPanel.add(loadGameButton);
@@ -64,9 +64,9 @@ public class MainMenuPanel extends JPanel {
         exitButton.addActionListener(event -> System.exit(0));
     }
 
-    private JButton createButton(String text, int fontSize) {
+    private JButton createButton(String text) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Arial", Font.PLAIN, fontSize));
+        button.setFont(new Font("Arial", Font.PLAIN, 24));
         return button;
     }
 }

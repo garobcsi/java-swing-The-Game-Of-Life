@@ -26,7 +26,7 @@ public class MatrixSizeMenuPanel extends JPanel implements KeyListener {
 
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
 
-        JButton backButton = createButton("Back", 24);
+        JButton backButton = createButton("Back");
         backButton.addActionListener(e -> switcher.switchTo("home"));
 
         topPanel.add(backButton);
@@ -39,24 +39,24 @@ public class MatrixSizeMenuPanel extends JPanel implements KeyListener {
 
         gbc.gridx = 0;
         gbc.gridy = 0;
-        contentPanel.add(createLabel("Number of Rows:", 24), gbc);
+        contentPanel.add(createLabel("Number of Rows:"), gbc);
 
-        JSpinner rowsSpinner = createSpinner(40);
+        JSpinner rowsSpinner = createSpinner();
         gbc.gridx = 1;
         contentPanel.add(rowsSpinner, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 1;
-        contentPanel.add(createLabel("Number of Columns:", 24), gbc);
+        contentPanel.add(createLabel("Number of Columns:"), gbc);
 
-        JSpinner colsSpinner = createSpinner(40);
+        JSpinner colsSpinner = createSpinner();
         gbc.gridx = 1;
         contentPanel.add(colsSpinner, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.gridwidth = 2;
-        JButton submitButton = createButton("Set Matrix Size", 26);
+        JButton submitButton = createButton("Set Matrix Size");
         submitButton.addActionListener(e -> {
             matrix.changeSize((Integer) colsSpinner.getValue(), (Integer) rowsSpinner.getValue());
             switcher.switchTo("grid");
@@ -68,20 +68,20 @@ public class MatrixSizeMenuPanel extends JPanel implements KeyListener {
         add(contentPanel, BorderLayout.CENTER);
     }
 
-    private JButton createButton(String text, int fontSize) {
+    private JButton createButton(String text) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Arial", Font.PLAIN, fontSize));
+        button.setFont(new Font("Arial", Font.PLAIN, 24));
         return button;
     }
 
-    private JLabel createLabel(String text, int fontSize) {
+    private JLabel createLabel(String text) {
         JLabel label = new JLabel(text);
-        label.setFont(new Font("Arial", Font.PLAIN, fontSize));
+        label.setFont(new Font("Arial", Font.PLAIN, 24));
         return label;
     }
 
-    private JSpinner createSpinner(int initialValue) {
-        JSpinner spinner = new JSpinner(new SpinnerNumberModel(initialValue, 1, 100, 1));
+    private JSpinner createSpinner() {
+        JSpinner spinner = new JSpinner(new SpinnerNumberModel(40, 1, 100, 1));
         spinner.setFont(new Font("Arial", Font.PLAIN, 20));
         ((JSpinner.DefaultEditor) spinner.getEditor()).getTextField().setColumns(5);
         return spinner;
