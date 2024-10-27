@@ -55,7 +55,8 @@ public class PauseMenuPanel extends JPanel implements KeyListener {
         });
 
         controlsButton.addActionListener(e -> {
-
+            switcher.switchTo("gameControls");
+            switcher.unregisterKeyListener("pause");
         });
 
         saveGameButton.addActionListener(e -> {

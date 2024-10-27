@@ -21,6 +21,7 @@ public class Main {
         switcher.addPanel("matrixSize", new MatrixSizeMenuPanel(switcher, bufferedMatrix));
         switcher.addPanel("grid", new ScalableGridPanel(bufferedMatrix));
         switcher.addPanel("nextStep",new CellularAutomataPanel(new CellularAutomata(bufferedMatrix)));
+        switcher.addPanel("gameControls",new GameControlsPanel(switcher));
 
         switcher.switchTo("home");
 
