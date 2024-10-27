@@ -11,7 +11,7 @@ public class MatrixSizeMenuPanel extends JPanel implements KeyListener {
     private final CardLayoutSwitcherPanel switcher;
     private final BufferedMatrix<Boolean> matrix;
 
-    MatrixSizeMenuPanel(CardLayoutSwitcherPanel switcher, BufferedMatrix<Boolean> matrix) {
+    public MatrixSizeMenuPanel(CardLayoutSwitcherPanel switcher, BufferedMatrix<Boolean> matrix) {
         this.switcher = switcher;
         this.matrix = matrix;
         setFocusable(true);

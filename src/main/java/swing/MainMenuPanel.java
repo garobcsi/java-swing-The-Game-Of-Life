@@ -10,7 +10,7 @@ public class MainMenuPanel extends JPanel {
     private final CardLayoutSwitcherPanel switcher;
     private final BufferedMatrix<Boolean> matrix;
 
-    MainMenuPanel(CardLayoutSwitcherPanel switcher, BufferedMatrix<Boolean> matrix) {
+    public MainMenuPanel(CardLayoutSwitcherPanel switcher, BufferedMatrix<Boolean> matrix) {
         this.switcher = switcher;
         this.matrix = matrix;
 

@@ -14,7 +14,7 @@ public class PauseMenuPanel extends JPanel implements KeyListener {
 
     private boolean didUserSave = false;
 
-    PauseMenuPanel(CardLayoutSwitcherPanel switcher, BufferedMatrix<Boolean> matrix) {
+    public PauseMenuPanel(CardLayoutSwitcherPanel switcher, BufferedMatrix<Boolean> matrix) {
         this.switcher = switcher;
         this.matrix = matrix;
 

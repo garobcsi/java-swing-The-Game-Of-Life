@@ -1,7 +1,6 @@
-package swing;
-
 import game.BufferedMatrix;
 import game.CellularAutomata;
+import swing.*;
 
 import javax.swing.*;
 
