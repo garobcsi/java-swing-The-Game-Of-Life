@@ -92,7 +92,7 @@ public class MatrixSizeMenuPanel extends JPanel implements KeyListener {
         gbc.gridwidth = 2;
         JButton submitButton = createButton("Set Matrix Size");
         submitButton.addActionListener(e -> {
-            matrix.changeSize((Integer) colsSpinner.getValue(), (Integer) rowsSpinner.getValue());
+            matrix.changeSize((Integer) rowsSpinner.getValue(), (Integer) colsSpinner.getValue());
             switcher.switchTo("grid");
             switcher.registerKeyListener("pause");
             switcher.registerKeyListener("nextStep");
