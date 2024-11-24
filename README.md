@@ -9,7 +9,7 @@ Ez a README tartalmazza azokat az alapvető információkat és linkeket, amelye
 ## Hivatkozások
 
 1. **Specifikáció**  
-   A játék technikai követelményei és részletes működési leírása elérhető az alábbi linken:  
+   A játék technikai követelményei és részletes működési leírása:  
    [Specifikáció](./specification/compiled-specification.pdf)
 
 2. **Dokumentáció**  
