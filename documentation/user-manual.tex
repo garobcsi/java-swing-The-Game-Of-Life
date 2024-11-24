@@ -1,0 +1,63 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}  % Karakterkódolás beállítása (UTF-8)
+\usepackage[T1]{fontenc}      % Kimeneti karakterkészlet (T1)
+\usepackage[hungarian]{babel} % Magyar nyelvi támogatás
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\title{Game of Life Felhasználói Kézikönyv}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Bevezetés}
+Ez a dokumentáció a Game of Life program használatához nyújt útmutatást. A program egy Java nyelven megvalósított életjáték (Game of Life), amelyben a felhasználók különböző beállításokkal és vezérlőkkel irányíthatják a játékot.
+
+\section*{Program indítása}
+A program indításakor három lehetőség közül választhat a felhasználó:
+\begin{itemize}
+    \item \textbf{Játék elindítása} – Új játék indításához.
+    \item \textbf{Játék betöltése} – Korábbi játékállás betöltéséhez. Ebben az esetben egy \textit{dialog box} jelenik meg, amely egy \texttt{.json} fájlt vár bemeneti fájlként. A kiválasztás után a program automatikusan betölti a játékot.
+    \item \textbf{Játék bezárása} – A program kilépéséhez.
+\end{itemize}
+
+\section*{Új játék indítása}
+Az \textbf{Játék elindítása} opció választása esetén a felhasználó beállíthatja a játék \textbf{grid} méretét, amelyhez megadhatja a sorok (\texttt{row}) és oszlopok (\texttt{column}) számát. A megfelelő beállítások után a játék elindul.
+
+\newpage
+\section*{Játék közbeni vezérlők}
+A játék elindítása után a felhasználó a következő billentyűzet- és egérvezérlőket használhatja:
+
+\subsection*{Billentyűzet-vezérlők}
+\begin{itemize}
+    \item \textbf{WASD / Nyílbillentyűk} – A képernyő mozgatása.
+    \item \textbf{P} – Játék lejátszása/szüneteltetése.
+    \item \textbf{N} – Következő lépés megtekintése.
+    \item \textbf{F} – A cellák véletlenszerű feltöltése.
+    \item \textbf{R} – A játék alaphelyzetbe állítása.
+    \item \textbf{HOME} – A kijelző alaphelyzetbe állítása.
+\end{itemize}
+
+\subsection*{Egérvezérlők}
+\begin{itemize}
+    \item \textbf{Bal egérgomb} – Cella átváltása (élő/halott).
+    \item \textbf{Középső egérgomb} – Rajzolás (folyamatos cellák kijelölése).
+    \item \textbf{Jobb egérgomb} – A kijelző mozgatása.
+\end{itemize}
+
+\section*{ESC gomb funkciói}
+Játék közben az \textbf{ESC} gomb megnyomásával a felhasználó különböző lehetőségeket érhet el:
+\begin{itemize}
+    \item \textbf{Visszatérés a játékba} – Folytatja az aktuális játékot.
+    \item \textbf{Használati utasítás} – A játékvezérlők rövid összefoglalójának megtekintése.
+    \item \textbf{Játék mentése} – Megnyit egy \textit{dialog box}-ot, amely lehetővé teszi a játékállás mentését \texttt{.json} formátumban.
+    \item \textbf{Visszatérés a főmenübe} – Kilép a főmenübe. Ha a játék nincs mentve, a program figyelmeztetést jelenít meg, és megkérdezi, hogy valóban mentés nélkül kíván-e kilépni.
+\end{itemize}
+
+\end{document}
