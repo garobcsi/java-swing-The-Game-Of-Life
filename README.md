@@ -20,4 +20,7 @@ Ez a README tartalmazza azokat az alapvető információkat és linkeket, amelye
    Lépésről lépésre szóló útmutató, amely segít a játék használatában:  
    [Felhasználói kézikönyv](./documentation/compiled-user-manual.pdf)
 
+4. **UML Gráf**
+   ![UML Graph](./documentation/graph.png)
+
 ---
